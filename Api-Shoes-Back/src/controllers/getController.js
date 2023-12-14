@@ -4,9 +4,10 @@ const Product = require('../models/product');
 const getAllProducts = async () => {
   try {
     const productsDB = await Product.find({}, { __v: 0 }); // Excluye el campo __v
-    console.log("este es el producto controller"+productsDB)
+    console.log("Estos son los productos del controlador:", productsDB);
     return productsDB;
   } catch (error) {
+    console.error('Error al recuperar todos los productos:', error.message);
     throw new Error('Error al recuperar todos los productos');
   }
 };
@@ -14,3 +15,4 @@ const getAllProducts = async () => {
 module.exports = {
   getAllProducts,
 };
+
