@@ -1,46 +1,16 @@
-const axios = require('axios');
+const Product = require('../models/product');
 
-
-//Acá viene la API
-const {URL_LINK} = process.env
-// Acá viene la base de datos
-
-// Acá viene link de la API
-
-
-
-//DE LA API
-const getAllProductsApi = async () => {
-    
-    const responseProducts = await axios.get(`${URL_LINK}?`)
-    const productsFromApi = responseProducts.data.map((dog) => {
-      return {
-        id: dog.id,
-        image: dog.reference_image_id,
-        name: dog.name,
-        temperament: dog.temperament,
-        weight: dog.weight,
-        origin: dog.origin,
-        temperamentCC: dog.temperament,
-      };
-    });
-
-  return productsFromApi
-};
-
-
-
-// DE LA DB
+// Obtener todos los productos de la base de datos
 const getAllProducts = async () => {
-    const shoesDB = await shoes.findAll({
-      attributes: {
-        exclude: ["createdAt", "updatedAt"], // Excluye createdAt y updatedAt del modelo "Dogs"
-      },
-    });
+  try {
+    const productsDB = await Product.find({}, { __v: 0 }); // Excluye el campo __v
+    console.log("este es el producto controller"+productsDB)
+    return productsDB;
+  } catch (error) {
+    throw new Error('Error al recuperar todos los productos');
+  }
 };
-
 
 module.exports = {
-    getAllProducts
+  getAllProducts,
 };
-
