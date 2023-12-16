@@ -5,15 +5,19 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 //rutas
 import Home from './components/Home';
+import Usuario from './components/Usuario';
 
 function App() {
 
 
   return (
-    <div className='App'>
-    <Routes>
-    <Route path='/' element={<Home/>}/>
-    </Routes>
+    <div className='container'>
+      <div className='row col-sm-12 col-md-12 col-lg-12 col-xl-12  mb-3'>
+        <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/:user_id' element={<Usuario/>}/>
+        </Routes>
+      </div>
     </div>
   )
 }

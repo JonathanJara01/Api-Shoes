@@ -12,7 +12,28 @@ const getAllProducts = async () => {
   }
 };
 
+const getSpecialPrice = async (user_id) => {
+  try {
+    const productsDB = await Product.find({}, { __v: 0 });
+
+    // Filtrar productos para incluir solo aquellos con specialPrices que contengan el usuario especificado
+    const productsWithSpecialPrices = productsDB.filter(product => {
+      return Object.keys(product.specialPrices).some(user => user === user_id);
+    });
+
+    console.log(`Productos con precios especiales para ${user_id}:`, productsWithSpecialPrices);
+
+    return productsWithSpecialPrices;
+  } catch (error) {
+    console.error('Error al recuperar productos con precios especiales:', error.message);
+    throw new Error('Error al recuperar productos con precios especiales');
+  }
+};
+
+
+
 module.exports = {
   getAllProducts,
+  getSpecialPrice
 };
 

@@ -1,9 +1,10 @@
 //importacion de todas las actions para darselas al reducer
-import { GET_ALL_SHOES } from './actions';
+import { GET_ALL_SHOES, GET_USER_SPECIAL_PRICE } from './actions';
 
 // estado inicial con un arreglo vacio donde posteriormente se almacenaran todos los productos
 const initialState = {
-    allShoes: []
+    allShoes: [],
+    userSpecialPrices: {}
   };
 
   export default function rootReducer(state = initialState, action) {
@@ -21,6 +22,18 @@ const initialState = {
                   allShoes: [],
                 };
               }
+        case GET_USER_SPECIAL_PRICE:
+            const { userId, productName, specialPrice } = action.payload;
+                return {
+                  ...state,
+                  userSpecialPrices: {
+                    ...state.userSpecialPrices,
+                    [userId]: {
+                      ...(state.userSpecialPrices[userId] || {}),
+                      [productName]: specialPrice,
+                    },
+                  },
+                };
 
         default:
             return state;
