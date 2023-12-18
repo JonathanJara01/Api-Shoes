@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Usuario from './components/Usuario';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3002';
+axios.defaults.baseURL = 'api-shoes-production.up.railway.app';
 
 function App() {
 
