@@ -2,6 +2,7 @@
 
 const server = require('./src/app.js');
 require('./src/dataBase.js');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3002;
 

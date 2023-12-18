@@ -25,7 +25,7 @@ serverApp.use(morgan('dev'));
 En este caso, registra información detallada sobre cada solicitud entrante en la consola en un formato amigable para el desarrollo ('dev'). */
 
 serverApp.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // Dominio con el cual se hace match
+  res.header('Access-Control-Allow-Origin', 'https://api-shoes-blue.vercel.app'); // Dominio con el cual se hace match
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
